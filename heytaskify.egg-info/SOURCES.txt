@@ -1,0 +1,12 @@
+README.md
+setup.py
+heytaskify.egg-info/PKG-INFO
+heytaskify.egg-info/SOURCES.txt
+heytaskify.egg-info/dependency_links.txt
+heytaskify.egg-info/entry_points.txt
+heytaskify.egg-info/requires.txt
+heytaskify.egg-info/top_level.txt
+taskify/__init__.py
+taskify/main.py
+taskify/storage.py
+taskify/task_manager.py

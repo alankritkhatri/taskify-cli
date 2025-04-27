@@ -1,0 +1,76 @@
+Metadata-Version: 2.4
+Name: heytaskify
+Version: 1.0.4
+Summary: A command-line task management application for tracking and organizing your tasks
+Description-Content-Type: text/markdown
+Requires-Dist: click==8.1.8
+Requires-Dist: art
+Requires-Dist: colorama==0.4.6
+Requires-Dist: inspirational-quotes
+Requires-Dist: certifi==2025.1.31
+Requires-Dist: charset-normalizer==3.4.1
+Requires-Dist: docopt==0.6.2
+Requires-Dist: docutils==0.21.2
+Requires-Dist: id==1.5.0
+Requires-Dist: idna==3.10
+Requires-Dist: jaraco.classes==3.4.0
+Requires-Dist: jaraco.context==6.0.1
+Requires-Dist: jaraco.functools==4.1.0
+Requires-Dist: keyring==25.6.0
+Requires-Dist: markdown-it-py==3.0.0
+Requires-Dist: mdurl==0.1.2
+Requires-Dist: more-itertools==10.7.0
+Requires-Dist: nh3==0.2.21
+Requires-Dist: packaging==25.0
+Requires-Dist: pipreqs==0.4.13
+Requires-Dist: pyfiglet==1.0.2
+Requires-Dist: Pygments==2.19.1
+Requires-Dist: pywin32-ctypes==0.2.3
+Requires-Dist: readme_renderer==44.0
+Requires-Dist: requests==2.32.3
+Requires-Dist: requests-toolbelt==1.0.0
+Requires-Dist: rfc3986==2.0.0
+Requires-Dist: rich==14.0.0
+Requires-Dist: setuptools==79.0.1
+Requires-Dist: tabulate==0.9.0
+Requires-Dist: twine==6.1.0
+Requires-Dist: urllib3==2.4.0
+Requires-Dist: wheel==0.45.1
+Requires-Dist: yarg==0.1.10
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: requires-dist
+Dynamic: summary
+
+
+# Commands
+
+1. Add Task
+```
+py .\main.py addtask "Task Title" --description "task description" --status "pending" --duedate "22-3-2014"
+```
+
+To create multiple tasks at once (adding more arguments to each flag):
+```
+py .\main.py addtask "Task Title" "Task 2 Title" --description "task description" "task 2  description" --status "pending"  "pending" --duedate "22-3-2014" "22-3-2014"
+```
+
+2. Show Tasks
+```
+py .\main.py showtasks
+```
+
+3. Show Stats
+```
+py .\main.py stats
+```
+
+4. Delete Task
+```
+py .\main.py deletetask <task_number>
+```
+
+5. Update Status
+```
+py .\main.py updatestatus <task_number> <new_status>
+```

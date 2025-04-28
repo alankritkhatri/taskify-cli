@@ -64,10 +64,12 @@ def main():
                 for task, description, duedate, status in zip(args.taskname, args.description, args.duedate, args.status):
                     TasksController.add_task(
                         task, description, duedate, status or "pending")
-            elif ((len(args.taskname)) == 1 and ((len(args.description)) == 1 or (len(args.duedate)) == 1 or (len(args.status)) == 1)):
-                for task, description, duedate, status in zip(args.taskname, args.description, args.duedate, args.status):
-                    TasksController.add_task(
-                        task, description, duedate, status or "pending")
+            elif ((len(args.taskname)) == 1):
+                task = args.taskname[0]
+                description = (args.description[0] if args.description else "")
+                duedate = (args.duedate[0] if args.duedate else "")
+                status = (args.status[0] if args.status else "pending")
+                TasksController.add_task(task, description, duedate, status)
 
             show_tasks = input(
                 Fore.BLUE + "want to see all tasks? press y for yes and n for no? ")

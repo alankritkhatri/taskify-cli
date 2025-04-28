@@ -33,17 +33,17 @@ class TasksController:
     @staticmethod
     def add_task(title, description, due_date=None, status="pending"):
         try:
-            print(status)
             status_choices = ("pending", "in-progress", "completed")
             if status not in status_choices:
                 raise ValueError(
                     "Status should be one of pending or in-progress or completed")
-            if not datetime.strptime(due_date, "%d-%m-%Y"):
-                raise ValueError("add due date in dd-mm-yyyy format")
+            if due_date:
+                if not datetime.strptime(due_date, "%d-%m-%Y"):
+                    raise ValueError("add due date in dd-mm-yyyy format")
             task = Task(title, description, due_date, status)
             print(f"\n{Fore.WHITE}Adding Task with title -->{Fore.YELLOW + Back.BLACK}{title} {Style.RESET_ALL}with status -->{Fore.YELLOW + Back.BLACK} {status if status else "pending"} {Style.RESET_ALL} and due date --> {Fore.YELLOW + Back.BLACK}{due_date if due_date else None} ")
             StorageManager.add_object(task)
-            TasksController.defaut_formatting("Task added")
+            TasksController.default_formatting("Task added")
         except Exception as e:
             print(f" {Fore.RED} ERROR {e}")
 
@@ -58,9 +58,9 @@ class TasksController:
                 data = json.load(file)
                 tasks = data.get("tasks", [])
                 headers = ["Task Number", "Title",
-                        "Description", "Status", "Task ID"]
+                        "Description", "Status", "Due Date", "Task ID"]
                 rows = [(task["task_number"], task["title"], task["description"],
-                        task["status"], task["task_id"]) for task in tasks]
+                        task["status"], task["due_date"] ,task["task_id"]) for task in tasks]
             print(tabulate(rows, headers=headers, tablefmt="grid"))
         except Exception as e:
             print(e)
@@ -76,14 +76,13 @@ class TasksController:
         TasksController.defaut_formatting("Task Deleted")
 
     @staticmethod
-    def defaut_formatting(text):
+    def default_formatting(text):
         time.sleep(0.5)
         ascii_text = pyfiglet.figlet_format(f"\n{text}\n")
         border = "+" + "-" * (len(ascii_text.splitlines()[0]) + 1) + "+"
         for line in ascii_text.splitlines():
             print(f"| {line} |")
         time.sleep(0.5)
-        print(border)
 
     @staticmethod
     def check_stats():

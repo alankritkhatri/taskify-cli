@@ -1,7 +1,7 @@
 import json
 from colorama import Fore, Back, Style
 import os
-
+from datetime import datetime
 file_path = "./tasks.json"
 
 
@@ -56,7 +56,18 @@ class StorageManager:
             data = StorageManager.read_json(file_path)
             task_number = (len(data["tasks"]) + 1) if data["tasks"] else 1
             task.task_number = task_number
-            data["tasks"].append(task)
+            if task.due_date:
+                tasks_copy = data["tasks"][:]
+                tasks_copy.append(task.__dict__)
+                tasks_with_dates = list( filter(lambda task:task.get("due_date"),tasks_copy))
+                sorted_tasks_with_dates =sorted(tasks_with_dates,key=lambda task: datetime.strptime(task['due_date'], "%d-%m-%Y"))
+                tasks_without_dates = list(filter(lambda task:not task.get("due_date"),data["tasks"]))
+                data["tasks"] = []
+                data["tasks"].extend(sorted_tasks_with_dates)
+                data["tasks"].extend(tasks_without_dates)
+                
+            else:
+                data["tasks"].append(task.__dict__)
             StorageManager.write_json(file_path, data)
         except Exception as e:
             print(f" {Fore.RED}ERROR {e}")

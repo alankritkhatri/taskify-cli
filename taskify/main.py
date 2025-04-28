@@ -69,7 +69,6 @@ def main():
                 description = (args.description[0] if args.description else "")
                 duedate = (args.duedate[0] if args.duedate else "")
                 status = (args.status[0] if args.status else "pending")
-                print(task, description, duedate, status)
                 TasksController.add_task(task, description, duedate, status)
 
             show_tasks = input(

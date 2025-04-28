@@ -33,7 +33,6 @@ class TasksController:
     @staticmethod
     def add_task(title, description, due_date=None, status="pending"):
         try:
-            print(status)
             status_choices = ("pending", "in-progress", "completed")
             if status not in status_choices:
                 raise ValueError(
@@ -84,7 +83,6 @@ class TasksController:
         for line in ascii_text.splitlines():
             print(f"| {line} |")
         time.sleep(0.5)
-        print(border)
 
     @staticmethod
     def check_stats():

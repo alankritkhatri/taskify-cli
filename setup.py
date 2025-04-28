@@ -2,39 +2,39 @@ from setuptools import setup, find_packages
 
 setup(
     name='heytaskify',
-    version = "1.0.4",
+    version = "1.0.7",
     description = "A command-line task management application for tracking and organizing your tasks",
     long_description = """
 # Commands
 
 1. Add Task
 ```
-py .\main.py addtask "Task Title" --description "task description" --status "pending" --duedate "22-3-2014"
+heytaskify addtask "Task Title" --description "task description" --status "pending" --duedate "22-3-2014"
 ```
 
 To create multiple tasks at once (adding more arguments to each flag):
 ```
-py .\main.py addtask "Task Title" "Task 2 Title" --description "task description" "task 2  description" --status "pending"  "pending" --duedate "22-3-2014" "22-3-2014"
+heytaskify addtask "Task Title" "Task 2 Title" --description "task description" "task 2  description" --status "pending"  "pending" --duedate "22-3-2014" "22-3-2014"
 ```
 
 2. Show Tasks
 ```
-py .\main.py showtasks
+heytaskify showtasks
 ```
 
 3. Show Stats
 ```
-py .\main.py stats
+heytaskify stats
 ```
 
 4. Delete Task
 ```
-py .\main.py deletetask <task_number>
+heytaskify deletetask <task_number>
 ```
 
 5. Update Status
 ```
-py .\main.py updatestatus <task_number> <new_status>
+heytaskify updatestatus <task_number> <new_status>
 ```
 """,
     long_description_content_type = "text/markdown",
